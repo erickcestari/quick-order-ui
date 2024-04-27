@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react'
 import DashboardCard from './DashboardCard'
 import {
-  FileTextOutlined,
+  TeamOutlined,
 } from '@ant-design/icons'
 import { Api } from '@web/domain'
 import { ColProps } from 'antd'
 
-const OrdersCard = (props: ColProps) => {
+const OperatorsCard = (props: ColProps) => {
   const [ordersData, setOrdersData] = useState(0)
 
   useEffect(() => {
     const fetchOrders = async () => {
-      const orders = await Api.Order.findMany()
+      const orders = await Api.Operator.findMany()
       setOrdersData(orders.length)
     }
 
@@ -19,8 +19,8 @@ const OrdersCard = (props: ColProps) => {
   }, [])
 
   return (
-    <DashboardCard href='/orders' icon={<FileTextOutlined />} title='Ordens de Produção' value={ordersData} {...props}/>
+    <DashboardCard href='/operators' icon={<TeamOutlined />} title='Operadores' value={ordersData} {...props}/>
   )
 }
 
-export default OrdersCard
+export default OperatorsCard
