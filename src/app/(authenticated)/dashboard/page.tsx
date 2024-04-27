@@ -3,10 +3,11 @@
 import { Typography, Row } from 'antd'
 const { Title, Text } = Typography
 import { PageLayout } from '@web/layouts/Page.layout'
-import OrdersCard from '@web/view/dashboard/OrdersCard'
-import ProductsCard from '@web/view/dashboard/ProductsCard'
-import OperatorsCard from '@web/view/dashboard/OperatorsCard'
-import ProfitCard from '@web/view/dashboard/ProfitCard'
+import OrdersCard from '@web/view/dashboard/cards/OrdersCard'
+import ProductsCard from '@web/view/dashboard/cards/ProductsCard'
+import OperatorsCard from '@web/view/dashboard/cards/OperatorsCard'
+import ProfitCard from '@web/view/dashboard/cards/ProfitCard'
+import OrdersBarChart from '@web/view/dashboard/charts/OrdersBarChart'
 
 export default function DashboardInsightsPage() {
 
@@ -21,6 +22,9 @@ export default function DashboardInsightsPage() {
         <OrdersCard xs={24} sm={12} lg={6} />
         <ProductsCard xs={24} sm={12} lg={6} />
         <OperatorsCard xs={24} sm={12} lg={6} />
+      </Row>
+      <Row gutter={16} style={{ marginTop: '20px' }}>
+      <OrdersBarChart />
       </Row>
     </PageLayout>
   )
