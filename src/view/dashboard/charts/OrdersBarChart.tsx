@@ -14,7 +14,6 @@ const OrdersBarChart = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       const orders = await Api.Order.findMany()
-      console.log(orders)
       setOrdersData(orders)
     }
 
@@ -41,6 +40,10 @@ const OrdersBarChart = () => {
     const inProgressOrders = ordersData.filter(order => order.status === "In Progress")
     const pendingOrders = ordersData.filter(order => order.status === "Pending")
     const shippedOrders = ordersData.filter(order => order.status === "Shipped")
+
+    const monthNames = ordersData
+      .map(order => new Date(order.dateCreated).toLocaleString('pt-BR', { month: 'long' }))
+      .filter((value, index, self) => self.indexOf(value) === index);
 
     const option: echarts.EChartsOption = {
       legend: {},
@@ -70,7 +73,9 @@ const OrdersBarChart = () => {
       xAxis: [
         {
           type: 'category',
-          data: ordersData.map(order => new Date(order.dateCreated).toLocaleString('pt-BR', { month: 'long' })),
+          data: ordersData
+          .map(order => new Date(order.dateCreated).toLocaleString('pt-BR', { month: 'long' }))
+          .filter((value, index, self) => self.indexOf(value) === index),
           axisTick: {
             alignWithLabel: true
           }
@@ -91,7 +96,8 @@ const OrdersBarChart = () => {
           },
           color: '#52c41a',
           data: completedOrders.reduce((acc, order) => {
-            const month = new Date(order.dateCreated).getMonth();
+            const orderMonthName = new Date(order.dateCreated).toLocaleString('pt-BR', { month: 'long' });
+            const month = monthNames.indexOf(orderMonthName);
             if (!acc[month]) {
               acc[month] = 0;
             }
@@ -108,7 +114,8 @@ const OrdersBarChart = () => {
           },
           color: '#1890ff',
           data: inProgressOrders.reduce((acc, order) => {
-            const month = new Date(order.dateCreated).getMonth();
+            const orderMonthName = new Date(order.dateCreated).toLocaleString('pt-BR', { month: 'long' });
+            const month = monthNames.indexOf(orderMonthName);
             if (!acc[month]) {
               acc[month] = 0;
             }
@@ -125,7 +132,8 @@ const OrdersBarChart = () => {
           },
           color: '#722ed1',
           data: shippedOrders.reduce((acc, order) => {
-            const month = new Date(order.dateCreated).getMonth();
+            const orderMonthName = new Date(order.dateCreated).toLocaleString('pt-BR', { month: 'long' });
+            const month = monthNames.indexOf(orderMonthName);
             if (!acc[month]) {
               acc[month] = 0;
             }
@@ -142,7 +150,8 @@ const OrdersBarChart = () => {
           },
           color: '#faad14',
           data: pendingOrders.reduce((acc, order) => {
-            const month = new Date(order.dateCreated).getMonth();
+            const orderMonthName = new Date(order.dateCreated).toLocaleString('pt-BR', { month: 'long' });
+            const month = monthNames.indexOf(orderMonthName);
             if (!acc[month]) {
               acc[month] = 0;
             }
@@ -159,7 +168,8 @@ const OrdersBarChart = () => {
           },
           color: '#ff4d4f',
           data: canceledOrders.reduce((acc, order) => {
-            const month = new Date(order.dateCreated).getMonth();
+            const orderMonthName = new Date(order.dateCreated).toLocaleString('pt-BR', { month: 'long' });
+            const month = monthNames.indexOf(orderMonthName);
             if (!acc[month]) {
               acc[month] = 0;
             }
