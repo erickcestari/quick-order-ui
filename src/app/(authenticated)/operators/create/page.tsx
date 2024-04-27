@@ -20,7 +20,7 @@ export default function AddOperatorPage() {
   const handleSubmit = async (values: { name: string; email: string }) => {
     try {
       await Api.Operator.createOne(values)
-      enqueueSnackbar('Operator added successfully', { variant: 'success' })
+      enqueueSnackbar('Operador adicionado com sucesso', { variant: 'success' })
       router.push('/operators')
     } catch (error) {
       enqueueSnackbar('Failed to add operator', { variant: 'error' })
@@ -31,10 +31,10 @@ export default function AddOperatorPage() {
     <PageLayout layout="full-width">
       <div style={{ maxWidth: '600px', margin: '0 auto' }}>
         <Title level={2}>
-          <UserAddOutlined /> Add New Operator
+          <UserAddOutlined /> Criar novo Operador
         </Title>
         <Paragraph>
-          Use the form below to add a new operator profile into the system.
+          Utilize o formulário abaixo para adicionar um novo perfil de operador ao sistema.
         </Paragraph>
         <Form
           form={form}
@@ -43,27 +43,27 @@ export default function AddOperatorPage() {
           autoComplete="off"
         >
           <Form.Item
-            label="Name"
+            label="Nome"
             name="name"
             rules={[
-              { required: true, message: 'Please input the operator name!' },
+              { required: true, message: 'Por favor insira o nome do operador!' },
             ]}
           >
-            <Input placeholder="Enter operator name" />
+            <Input placeholder="Insira o nome do operador" />
           </Form.Item>
           <Form.Item
             label="Email"
             name="email"
             rules={[
-              { required: true, message: 'Please input the operator email!' },
-              { type: 'email', message: 'The input is not valid E-mail!' },
+              { required: true, message: 'Por favor insira operator email!' },
+              { type: 'email', message: 'E-mail inválido!' },
             ]}
           >
-            <Input placeholder="Enter operator email" />
+            <Input placeholder="Insira o email do operador" />
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit">
-              Add Operator
+              Criar Operador
             </Button>
           </Form.Item>
         </Form>

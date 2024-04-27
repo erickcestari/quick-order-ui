@@ -60,7 +60,7 @@ export default function ProfilePage() {
       <Flex justify="space-between" align="center">
         <Typography.Title level={1}>Profile</Typography.Title>
         <Button onClick={handleClickLogout} loading={isLoadingLogout}>
-          Logout
+          Sair do sistema
         </Button>
       </Flex>
 

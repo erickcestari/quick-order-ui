@@ -23,10 +23,10 @@ export default function AddProductPage() {
   }) => {
     try {
       await Api.Product.createOne(values)
-      enqueueSnackbar('Product added successfully', { variant: 'success' })
+      enqueueSnackbar('Produto adicionado com sucesso', { variant: 'success' })
       router.push('/products')
     } catch (error) {
-      enqueueSnackbar('Failed to add product', { variant: 'error' })
+      enqueueSnackbar('Falha ao adicionar o produto', { variant: 'error' })
     }
   }
 
@@ -34,10 +34,10 @@ export default function AddProductPage() {
     <PageLayout layout="full-width">
       <div style={{ maxWidth: '600px', margin: '0 auto' }}>
         <Title level={2}>
-          <PlusCircleOutlined /> Add New Product
+          <PlusCircleOutlined /> Criar novo Produto
         </Title>
         <Paragraph>
-          Fill in the details below to add a new product to the application.
+          Preencha os detalhes abaixo para adicionar um novo produto ao aplicativo.
         </Paragraph>
         <Form
           form={form}
@@ -46,33 +46,33 @@ export default function AddProductPage() {
           autoComplete="off"
         >
           <Form.Item
-            label="Product Name"
+            label="Nome do Produto"
             name="name"
             rules={[
-              { required: true, message: 'Please input the product name!' },
+              { required: true, message: 'Por favor insira um nome!' },
             ]}
           >
-            <Input placeholder="Enter product name" />
+            <Input placeholder="Insira o nome do produto" />
           </Form.Item>
-          <Form.Item label="Description" name="description">
-            <Input.TextArea rows={4} placeholder="Enter product description" />
+          <Form.Item label="Descrição" name="description">
+            <Input.TextArea rows={4} placeholder="Digite uma descrição" />
           </Form.Item>
           <Form.Item
-            label="Price"
+            label="Preço"
             name="price"
             rules={[
-              { required: true, message: 'Please input the product price!' },
+              { required: true, message: 'Por favor insira o preço do produto!' },
             ]}
           >
             <InputNumber
               min={0}
               style={{ width: '100%' }}
-              placeholder="Enter product price"
+              placeholder="Digite o preço do produto"
             />
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit">
-              Add Product
+              Adicionar Produto
             </Button>
           </Form.Item>
         </Form>

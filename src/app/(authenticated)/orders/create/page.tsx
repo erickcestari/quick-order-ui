@@ -57,10 +57,9 @@ export default function CreateOrderPage() {
     <PageLayout layout="full-width">
       <Row justify="center">
         <Col xs={24} sm={18} md={12}>
-          <Title level={2}>Create New Order</Title>
+          <Title level={2}>Criar nova Ordem</Title>
           <Text>
-            Create a new order by selecting products and specifying their
-            quantities.
+            Crie uma nova ordem selecionando os produtos e sua quantidade.
           </Text>
           <Form
             form={form}
@@ -77,15 +76,15 @@ export default function CreateOrderPage() {
                         <Form.Item
                           {...restField}
                           name={[name, 'productId']}
-                          label="Product"
+                          label="Produto"
                           rules={[
                             {
                               required: true,
-                              message: 'Please select a product',
+                              message: 'Por favor selecione um produto',
                             },
                           ]}
                         >
-                          <Select placeholder="Select a product">
+                          <Select placeholder="Selecione um Produto">
                             {products.map((product: any) => (
                               <Option key={product.id} value={product.id}>
                                 {product.name}
@@ -98,11 +97,11 @@ export default function CreateOrderPage() {
                         <Form.Item
                           {...restField}
                           name={[name, 'quantity']}
-                          label="Quantity"
+                          label="Quantidade"
                           rules={[
                             {
                               required: true,
-                              message: 'Please input the quantity',
+                              message: 'Por favor insira a quantidade',
                             },
                           ]}
                         >
@@ -126,7 +125,7 @@ export default function CreateOrderPage() {
                       block
                       icon={<PlusOutlined />}
                     >
-                      Add Product
+                      Adicionar Produto
                     </Button>
                   </Form.Item>
                 </>
@@ -134,7 +133,7 @@ export default function CreateOrderPage() {
             </Form.List>
             <Form.Item>
               <Button type="primary" htmlType="submit">
-                Submit Order
+                Criar Ordem
               </Button>
             </Form.Item>
           </Form>

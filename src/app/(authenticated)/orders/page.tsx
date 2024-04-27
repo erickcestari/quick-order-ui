@@ -15,13 +15,14 @@ import { useSnackbar } from 'notistack'
 import { useRouter, useParams } from 'next/navigation'
 import { Api, Model } from '@web/domain'
 import { PageLayout } from '@web/layouts/Page.layout'
+import { Order } from '@web/domain/order'
 
 export default function ManageOrdersPage() {
   const router = useRouter()
   const { enqueueSnackbar } = useSnackbar()
   const authentication = useAuthentication()
   const userId = authentication.user?.id
-  const [orders, setOrders] = useState([])
+  const [orders, setOrders] = useState<Order[]>([])
 
   useEffect(() => {
     if (!userId) {
@@ -44,12 +45,12 @@ export default function ManageOrdersPage() {
 
   const deleteOrder = async orderId => {
     confirm({
-      title: 'Do you want to delete this order?',
+      title: 'Tem certeza que deseha deletar?',
       icon: <ExclamationCircleOutlined />,
       async onOk() {
         try {
           await Api.Order.deleteOne(orderId)
-          enqueueSnackbar('Order deleted successfully', { variant: 'success' })
+          enqueueSnackbar('Ordem deletado com sucesso', { variant: 'success' })
           fetchOrders() // Refresh the list
         } catch (error) {
           enqueueSnackbar('Failed to delete order', { variant: 'error' })
@@ -60,7 +61,7 @@ export default function ManageOrdersPage() {
 
   const columns = [
     {
-      title: 'Order ID',
+      title: 'ID da ordem',
       dataIndex: 'id',
       key: 'id',
     },
@@ -75,19 +76,19 @@ export default function ManageOrdersPage() {
       ),
     },
     {
-      title: 'Total Price',
+      title: 'Preço Total',
       dataIndex: 'totalPrice',
       key: 'totalPrice',
-      render: totalPrice => `$${totalPrice.toFixed(2)}`,
+      render: totalPrice => totalPrice ? `${totalPrice.toFixed(2)}` : "0",
     },
     {
-      title: 'Date Created',
+      title: 'Data de Criação',
       dataIndex: 'dateCreated',
       key: 'dateCreated',
       render: dateCreated => dayjs(dateCreated).format('DD/MM/YYYY'),
     },
     {
-      title: 'Actions',
+      title: 'Ações',
       key: 'actions',
       render: (_, record) => (
         <Space size="middle">
@@ -95,14 +96,14 @@ export default function ManageOrdersPage() {
             icon={<EditOutlined />}
             onClick={() => router.push(`/orders/${record.id}`)}
           >
-            Edit
+            Editar
           </Button>
           <Button
             icon={<DeleteOutlined />}
             onClick={() => deleteOrder(record.id)}
             danger
           >
-            Delete
+            Deletar
           </Button>
         </Space>
       ),
@@ -111,8 +112,8 @@ export default function ManageOrdersPage() {
 
   return (
     <PageLayout layout="full-width">
-      <Title level={2}>Manage Orders</Title>
-      <Text>View and manage all customer orders.</Text>
+      <Title level={2}>Gerencie as Ordens</Title>
+      <Text>Veja e gerencie todas as ordens de produção.</Text>
       <Table dataSource={orders} columns={columns} rowKey="id" />
     </PageLayout>
   )

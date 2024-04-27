@@ -37,8 +37,8 @@ export const UserForm: React.FC<Props> = ({
     >
       <Form.Item
         name="name"
-        label="Name"
-        rules={[{ required: true, message: 'Name is required' }]}
+        label="Nome"
+        rules={[{ required: true, message: 'Name é obrigatório' }]}
       >
         <Input />
       </Form.Item>
@@ -46,12 +46,12 @@ export const UserForm: React.FC<Props> = ({
       <Form.Item
         label="Email"
         name="email"
-        rules={[{ required: true, message: 'Email is required' }]}
+        rules={[{ required: true, message: 'Email é obrigatório' }]}
       >
-        <Input type="email" placeholder="Your email" autoComplete="email" />
+        <Input type="email" placeholder="Seu email" autoComplete="email" />
       </Form.Item>
 
-      <Form.Item label="Profile picture" name="pictureUrl">
+      <Form.Item label="Foto de perfil" name="pictureUrl">
         <Input />
       </Form.Item>
 
@@ -62,7 +62,7 @@ export const UserForm: React.FC<Props> = ({
           loading={isLoading}
           disabled={isDisabled}
         >
-          Save
+          Salvar
         </Button>
       </Form.Item>
     </Form>

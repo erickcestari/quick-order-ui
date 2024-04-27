@@ -47,10 +47,10 @@ export default function ManageProductsPage() {
     try {
       if (currentProduct) {
         await Api.Product.updateOne(currentProduct.id, values)
-        enqueueSnackbar('Product updated successfully', { variant: 'success' })
+        enqueueSnackbar('Produto atualizado com sucesso', { variant: 'success' })
       } else {
         await Api.Product.createOne(values)
-        enqueueSnackbar('Product created successfully', { variant: 'success' })
+        enqueueSnackbar('Produto criado com sucesso', { variant: 'success' })
       }
       form.resetFields()
       setIsModalVisible(false)
@@ -70,32 +70,32 @@ export default function ManageProductsPage() {
   const handleDeleteProduct = async productId => {
     try {
       await Api.Product.deleteOne(productId)
-      enqueueSnackbar('Product deleted successfully', { variant: 'success' })
+      enqueueSnackbar('Produto deletado com sucesso', { variant: 'success' })
       fetchProducts()
     } catch (error) {
-      enqueueSnackbar('Failed to delete product', { variant: 'error' })
+      enqueueSnackbar('Falha ao deletar o produto', { variant: 'error' })
     }
   }
 
   const columns = [
     {
-      title: 'Name',
+      title: 'Nome',
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: 'Description',
+      title: 'Descrição',
       dataIndex: 'description',
       key: 'description',
     },
     {
-      title: 'Price',
+      title: 'Preço',
       dataIndex: 'price',
       key: 'price',
       render: text => `$${text}`,
     },
     {
-      title: 'Actions',
+      title: 'Ações',
       key: 'actions',
       render: (_, record) => (
         <Space size="middle">
@@ -117,22 +117,22 @@ export default function ManageProductsPage() {
     <PageLayout layout="full-width">
       <Row justify="center">
         <Col span={24}>
-          <Title level={2}>Manage Products</Title>
+          <Title level={2}>Gerenciar Produtos</Title>
           <Text>
-            This page is dedicated to the creation, viewing, and management of
-            product entries.
+            Esta página é dedicada à criação, visualização e gerenciamento de
+            entradas de produtos.
           </Text>
           <Button
             type="primary"
             icon={<PlusOutlined />}
             onClick={() => setIsModalVisible(true)}
-            style={{ marginBottom: 16 }}
+            style={{ marginBottom: 16, marginLeft: 16 }}
           >
-            Add Product
+            Adicionar Produto
           </Button>
           <Table dataSource={products} columns={columns} rowKey="id" />
           <Modal
-            title={currentProduct ? 'Edit Product' : 'Add Product'}
+            title={currentProduct ? 'Editar Produto' : 'Adicionar Produto'}
             visible={isModalVisible}
             onCancel={() => setIsModalVisible(false)}
             footer={null}
@@ -144,23 +144,23 @@ export default function ManageProductsPage() {
             >
               <Form.Item
                 name="name"
-                label="Name"
+                label="Nome"
                 rules={[
-                  { required: true, message: 'Please input the product name!' },
+                  { required: true, message: 'Por favor insira um nome!' },
                 ]}
               >
                 <Input />
               </Form.Item>
-              <Form.Item name="description" label="Description">
+              <Form.Item name="description" label="Descrição">
                 <Input.TextArea />
               </Form.Item>
               <Form.Item
                 name="price"
-                label="Price"
+                label="Preço"
                 rules={[
                   {
                     required: true,
-                    message: 'Please input the product price!',
+                    message: 'Por favor insira o preço do produto!',
                   },
                 ]}
               >
@@ -168,7 +168,7 @@ export default function ManageProductsPage() {
               </Form.Item>
               <Form.Item>
                 <Button type="primary" htmlType="submit">
-                  {currentProduct ? 'Update' : 'Create'}
+                  {currentProduct ? 'Atualizar' : 'Criar'}
                 </Button>
               </Form.Item>
             </Form>
