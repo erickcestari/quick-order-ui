@@ -1,26 +1,26 @@
 import { useEffect, useState } from 'react'
 import DashboardCard from './DashboardCard'
 import {
-  FileTextOutlined,
+  DollarCircleOutlined,
 } from '@ant-design/icons'
 import { Api } from '@web/domain'
 import { ColProps } from 'antd'
 
-const OrdersCard = (props: ColProps) => {
+const ProfitCard = (props: ColProps) => {
   const [ordersData, setOrdersData] = useState(0)
 
   useEffect(() => {
     const fetchOrders = async () => {
       const orders = await Api.Order.findMany()
-      setOrdersData(orders.length)
+      setOrdersData(orders.reduce((acc, order) => acc + order.totalPrice, 0))
     }
 
     fetchOrders()
   }, [])
 
   return (
-    <DashboardCard href='/orders' icon={<FileTextOutlined />} title='Ordens de Produção' value={ordersData} {...props}/>
+    <DashboardCard href='/dashboard' icon={<DollarCircleOutlined />} title='Arrecadação' value={ordersData.toLocaleString("pt-BR", { style: 'currency', currency: 'BRL' })} hideLabel {...props}/>
   )
 }
 
-export default OrdersCard
+export default ProfitCard

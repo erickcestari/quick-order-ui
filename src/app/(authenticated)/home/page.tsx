@@ -1,8 +1,10 @@
 'use client'
 import { useDesignSystem } from '@web/designSystem'
 import { PageLayout } from '@web/layouts/Page.layout' // Assuming this can stay the same
+import OperatorsCard from '@web/view/dashboard/OperatorsCard'
 import OrdersCard from '@web/view/dashboard/OrdersCard'
 import ProductsCard from '@web/view/dashboard/ProductsCard'
+import ProfitCard from '@web/view/dashboard/ProfitCard'
 import { Divider, Flex, Typography } from 'antd'
 import Image from 'next/image'
 
@@ -30,8 +32,10 @@ export default function HomePage() {
       </div>
       <Divider />
       <div style={{display:"flex", flexWrap:"wrap", justifyContent:"space-between", gap: 8}}>
-      <ProductsCard />
+      <ProfitCard />
       <OrdersCard />
+      <ProductsCard />
+      <OperatorsCard />
       </div>
     </PageLayout>
   )

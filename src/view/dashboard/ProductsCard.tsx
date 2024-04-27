@@ -4,9 +4,9 @@ import {
   ProductOutlined
 } from '@ant-design/icons'
 import { Api } from '@web/domain'
+import { ColProps } from 'antd'
 
-
-const ProductsCard = () => {
+const ProductsCard = (props: ColProps) => {
   const [productsData, setProductsData] = useState(0)
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const ProductsCard = () => {
   }, [])
 
   return (
-    <DashboardCard href='/products' icon={<ProductOutlined />} title='Produtos' value={productsData} />
+    <DashboardCard href='/products' icon={<ProductOutlined />} title='Produtos' value={productsData} {...props}/>
   )
 }
 
