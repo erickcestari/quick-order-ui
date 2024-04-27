@@ -34,7 +34,7 @@ export const useAuthenticationLogin = (): Return => {
       const isIncorrect = code === 2
 
       if (isIncorrect) {
-        setErrors(['Incorrect email or password'])
+        setErrors(['Email ou senha incorreta'])
       } else {
         setErrors(['Something went wrong'])
       }
