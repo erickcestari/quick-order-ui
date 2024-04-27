@@ -30,7 +30,7 @@ export default function ResetPasswordPage() {
     setEmail(email)
   }
 
-  const onSuccess = async () => {}
+  const onSuccess = async () => { }
 
   return (
     <Flex align="center" justify="center" vertical flex={1}>
@@ -39,7 +39,7 @@ export default function ResetPasswordPage() {
         style={{ width: '340px', paddingBottom: '100px', paddingTop: '100px' }}
         gap="middle"
       >
-        <Header description="You will receive a verification code" />
+        <Header description="Voçê receberá um código de redefinição de senha" />
 
         <ErrorAlert errors={errors} />
 
@@ -56,11 +56,11 @@ export default function ResetPasswordPage() {
             onClick={() => router.push(RouterObject.route.LOGIN)}
           >
             <Flex gap={'small'} justify="center">
-              <Text>Sign in</Text>
+              <Text>Entrar</Text>
             </Flex>
           </Button>
 
-          <Text type="secondary">or</Text>
+          <Text type="secondary">ou</Text>
 
           <Button
             ghost
@@ -68,7 +68,7 @@ export default function ResetPasswordPage() {
             onClick={() => router.push(RouterObject.route.REGISTER)}
           >
             <Flex gap={'small'} justify="center">
-              <Text>Sign up</Text>
+              <Text>Cadastrar</Text>
             </Flex>
           </Button>
         </Flex>
