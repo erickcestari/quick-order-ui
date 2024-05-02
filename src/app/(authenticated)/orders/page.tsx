@@ -1,11 +1,12 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Button, Table, Typography, Modal, Space, Tag } from 'antd'
+import { Button, Table, Typography, Modal, Space } from 'antd'
 import {
   ExclamationCircleOutlined,
   EditOutlined,
   DeleteOutlined,
+  PlusOutlined,
 } from '@ant-design/icons'
 const { Title, Text } = Typography
 const { confirm } = Modal
@@ -15,6 +16,8 @@ import { useSnackbar } from 'notistack'
 import { useRouter, useParams } from 'next/navigation'
 import { Api, Model } from '@web/domain'
 import { PageLayout } from '@web/layouts/Page.layout'
+import { statusOrderColorMap } from '@web/view/orderColorMap'
+import Tag from '@web/core/components/Tag'
 import { Order } from '@web/domain/order'
 
 export default function ManageOrdersPage() {
@@ -70,7 +73,7 @@ export default function ManageOrdersPage() {
       dataIndex: 'status',
       key: 'status',
       render: status => (
-        <Tag color={status === 'completed' ? 'green' : 'volcano'}>
+        <Tag color={statusOrderColorMap.get(status)}>
           {status.toUpperCase()}
         </Tag>
       ),
@@ -79,7 +82,7 @@ export default function ManageOrdersPage() {
       title: 'Preço Total',
       dataIndex: 'totalPrice',
       key: 'totalPrice',
-      render: totalPrice => totalPrice ? `${totalPrice.toFixed(2)}` : "0",
+      render: totalPrice => `R$${totalPrice?.toFixed(2) ?? "0,00"}`,
     },
     {
       title: 'Data de Criação',
@@ -114,6 +117,14 @@ export default function ManageOrdersPage() {
     <PageLayout layout="full-width">
       <Title level={2}>Gerencie as Ordens</Title>
       <Text>Veja e gerencie todas as ordens de produção.</Text>
+      <Button
+        type="primary"
+        icon={<PlusOutlined />}
+        onClick={() => router.push('/orders/create')}
+        style={{ marginBottom: 16, marginLeft: 16 }}
+      >
+        Adicionar Ordem
+      </Button>
       <Table dataSource={orders} columns={columns} rowKey="id" />
     </PageLayout>
   )

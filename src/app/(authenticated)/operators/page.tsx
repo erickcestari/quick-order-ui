@@ -122,53 +122,12 @@ export default function ManageOperatorsPage() {
       <Button
         type="primary"
         icon={<PlusOutlined />}
-        onClick={() => {
-          setCurrentOperator(null)
-          form.resetFields()
-          setIsModalVisible(true)
-        }}
+        onClick={() => router.push('/operators/create')}
         style={{ marginBottom: 16, marginLeft: 16 }}
       >
-        Adicione Operador
+        Adicionar Operador
       </Button>
       <Table dataSource={operators} columns={columns} rowKey="id" />
-
-      <Modal
-        title={currentOperator ? 'Editar' : 'Adicionar Operador'}
-        visible={isModalVisible}
-        onCancel={() => setIsModalVisible(false)}
-        footer={null}
-      >
-        <Form
-          form={form}
-          layout="vertical"
-          onFinish={handleCreateOrUpdateOperator}
-        >
-          <Form.Item
-            name="name"
-            label="Nome"
-            rules={[
-              { required: true, message: 'Por favor insira o nome do operador!' },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            name="email"
-            label="Email"
-            rules={[
-              { required: true, message: 'Por favor insira o email do operador!' },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit">
-              Adicionar
-            </Button>
-          </Form.Item>
-        </Form>
-      </Modal>
     </PageLayout>
   )
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import * as echarts from 'echarts';
 import { Api } from '@web/domain';
 import { Order } from '@web/domain/order';
+import { statusOrderColorMap } from '@web/view/orderColorMap';
 
 
 
@@ -35,11 +36,11 @@ const OrdersBarChart = () => {
   useEffect(() => {
     if (ordersData.length == 0) return;
 
-    const canceledOrders = ordersData.filter(order => order.status === "Cancelled")
-    const completedOrders = ordersData.filter(order => order.status === "Completed")
-    const inProgressOrders = ordersData.filter(order => order.status === "In Progress")
-    const pendingOrders = ordersData.filter(order => order.status === "Pending")
-    const shippedOrders = ordersData.filter(order => order.status === "Shipped")
+    const canceledOrders = ordersData.filter(order => order.status === "Cancelado")
+    const completedOrders = ordersData.filter(order => order.status === "Concluído")
+    const inProgressOrders = ordersData.filter(order => order.status === "Em Progresso")
+    const pendingOrders = ordersData.filter(order => order.status === "Pendente")
+    const shippedOrders = ordersData.filter(order => order.status === "Enviado")
 
     const monthNames = ordersData
       .map(order => new Date(order.dateCreated).toLocaleString('pt-BR', { month: 'long' }))
@@ -110,13 +111,13 @@ const OrdersBarChart = () => {
       ],
       series: [
         {
-          name: 'Completados',
+          name: 'Concluído',
           type: 'bar',
           stack: 'orders',
           emphasis: {
             focus: 'series'
           },
-          color: '#52c41a',
+          color: statusOrderColorMap.get('Concluído'),
           data: completedOrders.reduce((acc, order) => {
             const orderMonthName = new Date(order.dateCreated).toLocaleString('pt-BR', { month: 'long' });
             const month = monthNames.indexOf(orderMonthName);
@@ -134,7 +135,7 @@ const OrdersBarChart = () => {
           emphasis: {
             focus: 'series'
           },
-          color: '#1890ff',
+          color: statusOrderColorMap.get('Em Progresso'),
           data: inProgressOrders.reduce((acc, order) => {
             const orderMonthName = new Date(order.dateCreated).toLocaleString('pt-BR', { month: 'long' });
             const month = monthNames.indexOf(orderMonthName);
@@ -146,13 +147,13 @@ const OrdersBarChart = () => {
           }, [])
         },
         {
-          name: 'Enviados',
+          name: 'Enviado',
           type: 'bar',
           stack: 'orders',
           emphasis: {
             focus: 'series'
           },
-          color: '#722ed1',
+          color: statusOrderColorMap.get('Enviado'),
           data: shippedOrders.reduce((acc, order) => {
             const orderMonthName = new Date(order.dateCreated).toLocaleString('pt-BR', { month: 'long' });
             const month = monthNames.indexOf(orderMonthName);
@@ -164,13 +165,13 @@ const OrdersBarChart = () => {
           }, [])
         },
         {
-          name: 'Pendentes',
+          name: 'Pendente',
           type: 'bar',
           stack: 'orders',
           emphasis: {
             focus: 'series'
           },
-          color: '#faad14',
+          color: statusOrderColorMap.get('Pendente'),
           data: pendingOrders.reduce((acc, order) => {
             const orderMonthName = new Date(order.dateCreated).toLocaleString('pt-BR', { month: 'long' });
             const month = monthNames.indexOf(orderMonthName);
@@ -182,13 +183,13 @@ const OrdersBarChart = () => {
           }, [])
         },
         {
-          name: 'Cancelados',
+          name: 'Cancelado',
           type: 'bar',
           stack: 'orders',
           emphasis: {
             focus: 'series'
           },
-          color: '#ff4d4f',
+          color: statusOrderColorMap.get('Cancelado'),
           data: canceledOrders.reduce((acc, order) => {
             const orderMonthName = new Date(order.dateCreated).toLocaleString('pt-BR', { month: 'long' });
             const month = monthNames.indexOf(orderMonthName);
