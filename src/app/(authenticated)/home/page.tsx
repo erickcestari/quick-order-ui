@@ -26,7 +26,7 @@ export default function HomePage() {
           <Title level={5} style={{ marginBottom: 5 }}>
             Onde a gestão <span style={{fontWeight:"bold"}}>eficiente</span> encontra a <span style={{fontWeight:"bold"}}>inovação</span>: simplifique a produção, controle a qualidade e visualize seus resultados em um só lugar.          </Title>
         </Flex>
-        <div style={{height: logoSize, width: logoSize, display:"flex", marginRight: logoMargin, marginLeft: logoMargin, marginTop: -12 }}>
+        <div style={{height: logoSize, width: logoSize, display:"flex", marginRight: logoMargin, marginLeft: logoMargin, marginTop: isMobile ? 0 : -12 }}>
           <Image style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} src="/quickorder-logo.png" width={1024} height={1024} alt='Logo da QuickOrder' />
         </div>
       </div>
