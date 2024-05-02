@@ -51,6 +51,28 @@ const OrdersBarChart = () => {
         text: 'Ordens de Produção por Mês',
         left: '1%'
       },
+      media: [
+        {
+          query: {
+            maxWidth: 500
+          },
+          option: {
+            toolbox: {show: false },
+            title: {
+              text: 'Ordens de Produção por Mês',
+              left: 'center'
+            },
+            legend: {
+              top: '32px',
+              
+            },
+            grid: {
+              top: '96px'
+            }
+          },
+
+        }
+      ],
       toolbox: {
         right: 10,
         feature: {
