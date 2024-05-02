@@ -16,7 +16,7 @@ export const Actions: React.FC<Props> = ({
     <>
       {canClearAll && (
         <Button onClick={onClearAll} loading={isLoadingClearAll}>
-          Clear All
+          Limpar
         </Button>
       )}
     </>

@@ -51,15 +51,15 @@ export default function ManageOperatorsPage() {
     try {
       if (currentOperator) {
         await Api.Operator.updateOne(currentOperator.id, values)
-        enqueueSnackbar('Operator updated successfully', { variant: 'success' })
+        enqueueSnackbar('Operador atualizado com sucesso', { variant: 'success' })
       } else {
         await Api.Operator.createOne(values)
-        enqueueSnackbar('Operator created successfully', { variant: 'success' })
+        enqueueSnackbar('Operador criado com sucesso', { variant: 'success' })
       }
       setIsModalVisible(false)
       fetchOperators()
     } catch (error) {
-      enqueueSnackbar('Failed to save operator', { variant: 'error' })
+      enqueueSnackbar('Falhou ao salvar o operador', { variant: 'error' })
     }
   }
 
@@ -72,16 +72,16 @@ export default function ManageOperatorsPage() {
   const deleteOperator = async operatorId => {
     try {
       await Api.Operator.deleteOne(operatorId)
-      enqueueSnackbar('Operator deleted successfully', { variant: 'success' })
+      enqueueSnackbar('Operator deletado com sucesso', { variant: 'success' })
       fetchOperators()
     } catch (error) {
-      enqueueSnackbar('Failed to delete operator', { variant: 'error' })
+      enqueueSnackbar('Falhou ao deletar o operador', { variant: 'error' })
     }
   }
 
   const columns = [
     {
-      title: 'Name',
+      title: 'Nome',
       dataIndex: 'name',
       key: 'name',
     },
@@ -91,7 +91,7 @@ export default function ManageOperatorsPage() {
       key: 'email',
     },
     {
-      title: 'Actions',
+      title: 'Ações',
       key: 'actions',
       render: (_, record) => (
         <Row gutter={16}>
@@ -115,9 +115,9 @@ export default function ManageOperatorsPage() {
 
   return (
     <PageLayout layout="full-width">
-      <Title>Manage Operators</Title>
+      <Title>Gerencie Operadores</Title>
       <Text>
-        View, edit, and manage operator profiles within the application.
+        Visualize, edite e gerencie perfis de operadores no aplicativo.
       </Text>
       <Button
         type="primary"
@@ -127,14 +127,14 @@ export default function ManageOperatorsPage() {
           form.resetFields()
           setIsModalVisible(true)
         }}
-        style={{ marginBottom: 16 }}
+        style={{ marginBottom: 16, marginLeft: 16 }}
       >
-        Add Operator
+        Adicione Operador
       </Button>
       <Table dataSource={operators} columns={columns} rowKey="id" />
 
       <Modal
-        title={`${currentOperator ? 'Edit' : 'Add'} Operator`}
+        title={currentOperator ? 'Editar' : 'Adicionar Operador'}
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
         footer={null}
@@ -146,9 +146,9 @@ export default function ManageOperatorsPage() {
         >
           <Form.Item
             name="name"
-            label="Name"
+            label="Nome"
             rules={[
-              { required: true, message: 'Please input the operator name!' },
+              { required: true, message: 'Por favor insira o nome do operador!' },
             ]}
           >
             <Input />
@@ -157,14 +157,14 @@ export default function ManageOperatorsPage() {
             name="email"
             label="Email"
             rules={[
-              { required: true, message: 'Please input the operator email!' },
+              { required: true, message: 'Por favor insira o email do operador!' },
             ]}
           >
             <Input />
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit">
-              Submit
+              Adicionar
             </Button>
           </Form.Item>
         </Form>

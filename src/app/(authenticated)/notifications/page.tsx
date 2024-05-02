@@ -27,7 +27,7 @@ export default function NotificationsPage() {
   return (
     <PageLayout layout="super-narrow">
       <Flex justify="space-between" align="center">
-        <Typography.Title level={1}>Notifications</Typography.Title>
+        <Typography.Title level={1}>Notificações</Typography.Title>
         <Actions
           canClearAll={canClearAll}
           isLoadingClearAll={actionClearAll.isLoading}

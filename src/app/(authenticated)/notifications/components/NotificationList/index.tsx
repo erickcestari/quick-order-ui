@@ -21,7 +21,7 @@ export const NotificationList: React.FC<Props> = ({
   return (
     <>
       {isEmpty ? (
-        <Text type="secondary">You have no notifications</Text>
+        <Text type="secondary">Você não possui notificações</Text>
       ) : (
         <List
           itemLayout="horizontal"

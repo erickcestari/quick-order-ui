@@ -84,7 +84,7 @@ export default function RegisterPage() {
         style={{ width: '340px', paddingBottom: '100px', paddingTop: '100px' }}
         gap="middle"
       >
-        <Header description="Welcome!" />
+        <Header description="Bem-vindo!" />
 
         <ErrorAlert errors={errors} />
 
@@ -100,7 +100,7 @@ export default function RegisterPage() {
           onClick={() => router.push(RouterObject.route.LOGIN)}
         >
           <Flex gap={'small'} justify="center">
-            <Text type="secondary">Have an account?</Text> <Text>Sign in</Text>
+            <Text type="secondary">Possui uma conta?</Text> <Text>Entrar</Text>
           </Flex>
         </Button>
       </Flex>

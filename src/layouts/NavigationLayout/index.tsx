@@ -33,37 +33,37 @@ export const NavigationLayout: React.FC<Props> = ({ children }) => {
   const itemsLeftbar = [
     {
       key: '/orders',
-      label: 'Orders',
+      label: 'Ordens',
       onClick: () => goTo('/orders'),
     },
 
     {
       key: '/orders/create',
-      label: 'Create Order',
+      label: 'Criar Ordem',
       onClick: () => goTo('/orders/create'),
     },
 
     {
       key: '/products',
-      label: 'Products',
+      label: 'Produtos',
       onClick: () => goTo('/products'),
     },
 
     {
       key: '/products/create',
-      label: 'Add Product',
+      label: 'Adicionar Produto',
       onClick: () => goTo('/products/create'),
     },
 
     {
       key: '/operators',
-      label: 'Operators',
+      label: 'Operadores',
       onClick: () => goTo('/operators'),
     },
 
     {
       key: '/operators/create',
-      label: 'Add Operator',
+      label: 'Adicionar Operadores',
       onClick: () => goTo('/operators/create'),
     },
 
@@ -81,47 +81,47 @@ export const NavigationLayout: React.FC<Props> = ({ children }) => {
   const itemsSubNavigation = [
     {
       key: '/orders',
-      label: 'Orders',
+      label: 'Ordens',
     },
 
     {
       key: '/orders/create',
-      label: 'Create Order',
+      label: 'Criar Ordens',
     },
 
     {
       key: '/orders/:id',
-      label: 'Order Details',
+      label: 'Detalhes Ordem',
     },
 
     {
       key: '/products',
-      label: 'Products',
+      label: 'Produtos',
     },
 
     {
       key: '/products/create',
-      label: 'Add Product',
+      label: 'Criar Produto',
     },
 
     {
       key: '/products/:id',
-      label: 'Product Details',
+      label: 'Detalhes Produto',
     },
 
     {
       key: '/operators',
-      label: 'Operators',
+      label: 'Operadores',
     },
 
     {
       key: '/operators/create',
-      label: 'Add Operator',
+      label: 'Criar Operador',
     },
 
     {
       key: '/operators/:id',
-      label: 'Operator Details',
+      label: 'Detalhes Operador',
     },
 
     {
@@ -133,12 +133,12 @@ export const NavigationLayout: React.FC<Props> = ({ children }) => {
   const itemsMobile = [
     {
       key: 'profile',
-      label: 'Profile',
+      label: 'Perfil',
       onClick: () => goTo(RouterObject.route.PROFILE),
     },
     {
       key: 'notifications',
-      label: 'Notifications',
+      label: 'Notificação',
       onClick: () => goTo(RouterObject.route.NOTIFICATIONS),
     },
     ...itemsTopbar,

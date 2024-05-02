@@ -81,7 +81,7 @@ export default function LoginPage() {
           }}
           gap="middle"
         >
-          <Header description="Welcome back!" />
+          <Header description="Bem-vindo de volta!" />
           <ErrorAlert errors={errors} />
 
           <LoginForm
@@ -102,7 +102,7 @@ export default function LoginPage() {
             onClick={() => router.push(RouterObject.route.REGISTER)}
           >
             <Flex gap={'small'} justify="center">
-              <Text type="secondary">No account?</Text> <Text>Sign up</Text>
+              <Text type="secondary">Sem conta?</Text> <Text>Cadastre-se</Text>
             </Flex>
           </Button>
         </Flex>

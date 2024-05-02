@@ -2,7 +2,7 @@ import { CheckCircleOutlined } from '@ant-design/icons'
 import { Col, Flex, Row, Typography } from 'antd'
 import React, { HTMLAttributes, ReactNode } from 'react'
 import { usePassword } from './usePasword'
-export interface PropsHTML extends HTMLAttributes<HTMLDivElement> {}
+export interface PropsHTML extends HTMLAttributes<HTMLDivElement> { }
 
 interface Props extends PropsHTML {
   value: string
@@ -41,7 +41,7 @@ export const MrbPasswordStrength: React.FC<Props> = ({ value, ...props }) => {
           </Col>
           <Col xs="fill">
             <Typography.Text type="secondary">
-              minimum 8 characters
+              mínimo 8 letras
             </Typography.Text>
           </Col>
         </Row>
@@ -55,7 +55,7 @@ export const MrbPasswordStrength: React.FC<Props> = ({ value, ...props }) => {
           <Col xs="fill">
             <Typography.Text type="secondary">
               {' '}
-              contains a number
+              conter número
             </Typography.Text>
           </Col>
         </Row>
@@ -68,7 +68,7 @@ export const MrbPasswordStrength: React.FC<Props> = ({ value, ...props }) => {
           <Col xs="fill">
             <Typography.Text type="secondary">
               {' '}
-              contains uppercase letter
+              conter letra maiúscula
             </Typography.Text>
           </Col>
         </Row>
@@ -81,7 +81,7 @@ export const MrbPasswordStrength: React.FC<Props> = ({ value, ...props }) => {
           <Col xs="fill">
             <Typography.Text type="secondary">
               {' '}
-              contains special character
+              conter caractere especial
             </Typography.Text>
           </Col>
         </Row>
