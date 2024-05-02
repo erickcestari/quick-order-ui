@@ -6,6 +6,7 @@ import {
   ExclamationCircleOutlined,
   EditOutlined,
   DeleteOutlined,
+  PlusOutlined,
 } from '@ant-design/icons'
 const { Title, Text } = Typography
 const { confirm } = Modal
@@ -116,6 +117,14 @@ export default function ManageOrdersPage() {
     <PageLayout layout="full-width">
       <Title level={2}>Gerencie as Ordens</Title>
       <Text>Veja e gerencie todas as ordens de produção.</Text>
+      <Button
+        type="primary"
+        icon={<PlusOutlined />}
+        onClick={() => router.push('/orders/create')}
+        style={{ marginBottom: 16, marginLeft: 16 }}
+      >
+        Adicionar Ordem
+      </Button>
       <Table dataSource={orders} columns={columns} rowKey="id" />
     </PageLayout>
   )
