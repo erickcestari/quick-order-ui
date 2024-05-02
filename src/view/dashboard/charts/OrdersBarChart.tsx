@@ -35,11 +35,11 @@ const OrdersBarChart = () => {
   useEffect(() => {
     if (ordersData.length == 0) return;
 
-    const canceledOrders = ordersData.filter(order => order.status === "Cancelled")
-    const completedOrders = ordersData.filter(order => order.status === "Completed")
-    const inProgressOrders = ordersData.filter(order => order.status === "In Progress")
-    const pendingOrders = ordersData.filter(order => order.status === "Pending")
-    const shippedOrders = ordersData.filter(order => order.status === "Shipped")
+    const canceledOrders = ordersData.filter(order => order.status === "Cancelado")
+    const completedOrders = ordersData.filter(order => order.status === "Concluído")
+    const inProgressOrders = ordersData.filter(order => order.status === "Em Progresso")
+    const pendingOrders = ordersData.filter(order => order.status === "Pendente")
+    const shippedOrders = ordersData.filter(order => order.status === "Enviado")
 
     const monthNames = ordersData
       .map(order => new Date(order.dateCreated).toLocaleString('pt-BR', { month: 'long' }))
