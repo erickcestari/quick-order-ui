@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Typography, Descriptions, List, Card, Divider, Tag, Space } from 'antd'
+import { Typography, Descriptions, List, Card, Divider, Space } from 'antd'
 import {
   ClockCircleOutlined,
   DollarOutlined,
@@ -15,6 +15,8 @@ import { useSnackbar } from 'notistack'
 import { useRouter, useParams } from 'next/navigation'
 import { Api, Model } from '@web/domain'
 import { PageLayout } from '@web/layouts/Page.layout'
+import Tag from '@web/core/components/Tag'
+import { statusOrderColorMap } from '@web/view/orderColorMap'
 
 export default function OrderDetailsPage() {
   const router = useRouter()
@@ -53,7 +55,7 @@ export default function OrderDetailsPage() {
         <Descriptions bordered column={1}>
           <Descriptions.Item label="Order ID">{order.id}</Descriptions.Item>
           <Descriptions.Item label="Status">
-            <Tag color={order.status === 'completed' ? 'green' : 'volcano'}>
+            <Tag color={ statusOrderColorMap.get(order.status) } style={{maxWidth: "118px"}}>
               {order.status.toUpperCase()}
             </Tag>
           </Descriptions.Item>
