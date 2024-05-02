@@ -92,7 +92,7 @@ export default function ManageProductsPage() {
       title: 'Price',
       dataIndex: 'price',
       key: 'price',
-      render: text => `$${text}`,
+      render: text => `R$${text}`,
     },
     {
       title: 'Actions',

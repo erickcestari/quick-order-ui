@@ -78,7 +78,7 @@ export default function ManageOrdersPage() {
       title: 'Total Price',
       dataIndex: 'totalPrice',
       key: 'totalPrice',
-      render: totalPrice => `$${totalPrice.toFixed(2)}`,
+      render: totalPrice => `R$${totalPrice?.toFixed(2) ?? "0,00"}`,
     },
     {
       title: 'Date Created',
