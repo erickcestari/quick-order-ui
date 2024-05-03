@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as echarts from 'echarts';
+import langPTbr from 'echarts/i18n/langPT-br-obj';
 import { Api } from '@web/domain';
 import { Order } from '@web/domain/order';
 import { statusOrderColorMap } from '@web/view/orderColorMap';
+
+echarts.registerLocale('pt-BR', langPTbr)
 
 
 
@@ -15,16 +18,16 @@ const OrdersBarChart = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       const orders = await Api.Order.findMany()
-      setOrdersData(orders)
+      setOrdersData(orders.sort((a, b) => new Date(a.dateCreated).getTime() - new Date(b.dateCreated).getTime()))
     }
 
     fetchOrders()
   }, [])
 
   useEffect(() => {
-    const myChart = echarts.init(chartRef.current)
+    const myChart = echarts.init(chartRef.current, null,  {locale: 'pt-BR'})
 
-    myChart.showLoading()
+    myChart.showLoading({text: 'Carregando...'})
 
     echartRef.current = myChart;
 
@@ -47,7 +50,10 @@ const OrdersBarChart = () => {
       .filter((value, index, self) => self.indexOf(value) === index);
 
     const option: echarts.EChartsOption = {
-      legend: {},
+      legend: {
+        top: '5%',
+        left: 'center'
+      },
       title: {
         text: 'Ordens de Produção por Mês',
         left: '1%'
