@@ -132,6 +132,48 @@ export default function ManageProductsPage() {
           </Button>
 
           <Table dataSource={products} columns={columns} rowKey="id" />
+          <Modal
+            title={currentProduct ? 'Editar Produto' : 'Adicionar Produto'}
+            visible={isModalVisible}
+            onCancel={() => setIsModalVisible(false)}
+            footer={null}
+          >
+            <Form
+              form={form}
+              layout="vertical"
+              onFinish={handleCreateOrUpdateProduct}
+            >
+              <Form.Item
+                name="name"
+                label="Nome"
+                rules={[
+                  { required: true, message: 'Por favor insira um nome!' },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item name="description" label="Descrição">
+                <Input.TextArea />
+              </Form.Item>
+              <Form.Item
+                name="price"
+                label="Preço"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Por favor insira o preço do produto!',
+                  },
+                ]}
+              >
+                <InputNumber min={0} style={{ width: '100%' }} />
+              </Form.Item>
+              <Form.Item>
+                <Button type="primary" htmlType="submit">
+                  {currentProduct ? 'Atualizar' : 'Criar'}
+                </Button>
+              </Form.Item>
+            </Form>
+          </Modal>
         </Col>
       </Row>
     </PageLayout>

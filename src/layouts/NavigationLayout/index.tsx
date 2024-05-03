@@ -56,6 +56,12 @@ export const NavigationLayout: React.FC<Props> = ({ children }) => {
     },
 
     {
+      key: '/defects',
+      label: 'Defeitos',
+      onClick: () => goTo('/defects'),
+    },
+
+    {
       key: '/operators',
       label: 'Operadores',
       onClick: () => goTo('/operators'),
@@ -72,6 +78,7 @@ export const NavigationLayout: React.FC<Props> = ({ children }) => {
       label: 'Dashboard',
       onClick: () => goTo('/dashboard'),
     },
+
   ]
 
   const itemsUser = []

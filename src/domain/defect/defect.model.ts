@@ -3,6 +3,8 @@ import { Product } from '../product'
 export class Defect {
   id: string
 
+  description: string
+
   status: string
 
   productId: string

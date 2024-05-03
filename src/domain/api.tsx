@@ -16,24 +16,26 @@ import { OrderProductApi } from './orderProduct/orderProduct.api'
 import { OperatorApi } from './operator/operator.api'
 
 import { ProductionActivityApi } from './productionActivity/productionActivity.api'
+import { DefectApi } from './defect'
 
 export namespace Api {
-  export class Ai extends AiApi {}
-  export class Authentication extends AuthenticationApi {}
-  export class Authorization extends AuthorizationApi {}
-  export class Upload extends UploadApi {}
+  export class Ai extends AiApi { }
+  export class Authentication extends AuthenticationApi { }
+  export class Authorization extends AuthorizationApi { }
+  export class Upload extends UploadApi { }
+  export class Defect extends DefectApi { }
 
-  export class User extends UserApi {}
+  export class User extends UserApi { }
 
-  export class Notification extends NotificationApi {}
+  export class Notification extends NotificationApi { }
 
-  export class Order extends OrderApi {}
+  export class Order extends OrderApi { }
 
-  export class Product extends ProductApi {}
+  export class Product extends ProductApi { }
 
-  export class OrderProduct extends OrderProductApi {}
+  export class OrderProduct extends OrderProductApi { }
 
-  export class Operator extends OperatorApi {}
+  export class Operator extends OperatorApi { }
 
-  export class ProductionActivity extends ProductionActivityApi {}
+  export class ProductionActivity extends ProductionActivityApi { }
 }
