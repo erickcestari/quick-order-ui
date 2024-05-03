@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as echarts from 'echarts';
+import langPTbr from 'echarts/i18n/langPT-br-obj';
 import { Api } from '@web/domain';
 import { Order } from '@web/domain/order';
 import { statusOrderColorMap } from '@web/view/orderColorMap';
+
+echarts.registerLocale('pt-BR', langPTbr)
 
 
 
@@ -22,7 +25,7 @@ const OrdersBarChart = () => {
   }, [])
 
   useEffect(() => {
-    const myChart = echarts.init(chartRef.current)
+    const myChart = echarts.init(chartRef.current, null,  {locale: 'pt-BR'})
 
     myChart.showLoading()
 
