@@ -28,7 +28,7 @@ const ProductsMadePieChart = () => {
   useEffect(() => {
     const myChart = echarts.init(chartRef.current, null, { locale: 'pt-BR' })
 
-    myChart.showLoading()
+    myChart.showLoading({text: 'Carregando...'})
 
     echartRef.current = myChart;
 
