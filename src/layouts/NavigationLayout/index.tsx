@@ -62,6 +62,12 @@ export const NavigationLayout: React.FC<Props> = ({ children }) => {
     },
 
     {
+      key: '/defects/create',
+      label: 'Adicionar Defeito',
+      onClick: () => goTo('/defects/create'),
+    },
+
+    {
       key: '/operators',
       label: 'Operadores',
       onClick: () => goTo('/operators'),
