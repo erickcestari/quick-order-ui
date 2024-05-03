@@ -8,8 +8,13 @@ import ProductsCard from '@web/view/dashboard/cards/ProductsCard'
 import OperatorsCard from '@web/view/dashboard/cards/OperatorsCard'
 import ProfitCard from '@web/view/dashboard/cards/ProfitCard'
 import OrdersBarChart from '@web/view/dashboard/charts/OrdersBarChart'
+import ProductsMadePieChart from '@web/view/dashboard/charts/ProductsMadePieChart'
+import { useDesignSystem } from '@web/designSystem'
 
 export default function DashboardInsightsPage() {
+
+  const { isMobile } = useDesignSystem()
+
 
   return (
     <PageLayout layout="full-width">
@@ -23,8 +28,9 @@ export default function DashboardInsightsPage() {
         <ProductsCard xs={24} sm={12} lg={6} />
         <OperatorsCard xs={24} sm={12} lg={6} />
       </Row>
-      <Row gutter={16} style={{ marginTop: '20px' }}>
+      <Row gutter={16} style={{ marginTop: '20px', display:'flex', flexWrap: isMobile ? "wrap" : "nowrap" }}>
       <OrdersBarChart />
+      <ProductsMadePieChart />
       </Row>
     </PageLayout>
   )

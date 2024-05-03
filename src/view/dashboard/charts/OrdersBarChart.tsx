@@ -18,7 +18,7 @@ const OrdersBarChart = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       const orders = await Api.Order.findMany()
-      setOrdersData(orders)
+      setOrdersData(orders.sort((a, b) => new Date(a.dateCreated).getTime() - new Date(b.dateCreated).getTime()))
     }
 
     fetchOrders()
@@ -50,7 +50,10 @@ const OrdersBarChart = () => {
       .filter((value, index, self) => self.indexOf(value) === index);
 
     const option: echarts.EChartsOption = {
-      legend: {},
+      legend: {
+        top: '5%',
+        left: 'center'
+      },
       title: {
         text: 'Ordens de Produção por Mês',
         left: '1%'
