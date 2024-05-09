@@ -51,9 +51,9 @@ export default function CreateDefectPage() {
     <PageLayout layout="full-width">
       <Row justify="center">
         <Col xs={24} sm={18} md={12}>
-          <Title level={2}>Criar nova Ordem</Title>
+          <Title level={2}>Criar novo defeito</Title>
           <Text>
-            Crie uma nova ordem selecionando os produtos e sua quantidade.
+            Crie um novo defeito selecionando o produto e descrevendo o seu defeito.
           </Text>
           <Form
             form={form}

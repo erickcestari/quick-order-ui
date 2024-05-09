@@ -38,7 +38,7 @@ export default function DefectDetailsPage() {
 
   return (
     <PageLayout layout="full-width">
-      <Title level={2}>Detalhes da Ordem</Title>
+      <Title level={2}>Detalhes do defeito</Title>
       <Text type="secondary">Aqui você encontra os detalhes do defeito do seu produto.</Text>
       <Divider />
       {defect ? (
