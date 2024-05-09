@@ -116,7 +116,14 @@ export const NavigationLayout: React.FC<Props> = ({ children }) => {
       key: '/products/create',
       label: 'Criar Produto',
     },
-
+    {
+      key: '/defects',
+      label: 'Defeitos',
+    },
+    {
+      key: '/defects/create',
+      label: 'Criar Defeito',
+    },
     {
       key: '/products/:id',
       label: 'Detalhes Produto',
